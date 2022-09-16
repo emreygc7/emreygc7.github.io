@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Intro from "./components/Intro";
+import Projects from "./components/Projects";
+import { Animator, ScrollContainer, ScrollPage, batch, Fade, FadeIn, MoveOut, Sticky } from "react-scroll-motion"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ScrollContainer>
+        <ScrollPage page={0}  >
+            <Animator animation={batch( )} >
+                <Header />
+            </Animator>
+        </ScrollPage>
+        <ScrollPage page={0}  >
+            <Animator animation={batch(FadeIn(), Sticky())}>
+                <Intro />
+            </Animator>
+        </ScrollPage>
+        <ScrollPage page={0} >
+            <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>
+                <Projects />
+            </Animator>
+        </ScrollPage>
+      </ScrollContainer>
   );
 }
 
